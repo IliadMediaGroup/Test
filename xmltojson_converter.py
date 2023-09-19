@@ -17,6 +17,15 @@ class XMLToJsonUI(tk.Frame):
         self.github_local_file_path_entry = tk.Entry(self)
         self.github_local_file_path_entry.pack()
 
+        self.github_username_entry = tk.Entry(self)
+        self.github_username_entry.pack()
+
+        self.github_email_entry = tk.Entry(self)
+        self.github_email_entry.pack()
+
+        self.github_repository_entry = tk.Entry(self)
+        self.github_repository_entry.pack()
+
         self.start_button = tk.Button(self, text="Start", command=self.start_conversion)
         self.start_button.pack()
 
@@ -37,6 +46,9 @@ class XMLToJsonUI(tk.Frame):
     def conversion_loop(self):
         xml_urls = self.xml_url_text_box.get("1.0", tk.END).splitlines()
         github_local_file_path = self.github_local_file_path_entry.get()
+        github_username = self.github_username_entry.get()
+        github_email = self.github_email_entry.get()
+        github_repository = self.github_repository_entry.get()
 
         while self.running:
             for xml_url in xml_urls:
@@ -52,7 +64,7 @@ class XMLToJsonUI(tk.Frame):
                 # Commit the changes to GitHub
                 subprocess.run(["git", "add", github_local_file_path])
                 subprocess.run(["git", "commit", "-m", "Converted XML to JSON"])
-                subprocess.run(["git", "push"])
+                subprocess.run(["git", "push", "--set-upstream", "origin", github_repository])
 
             # Wait for 7 seconds before checking the URL for changes
             time.sleep(7)
