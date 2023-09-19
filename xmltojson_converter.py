@@ -11,17 +11,32 @@ class XMLToJsonUI(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
 
+        self.xml_url_label = tk.Label(self, text="XML URLs")
+        self.xml_url_label.pack()
+
         self.xml_url_text_box = tk.Text(self, height=10, width=50)
         self.xml_url_text_box.pack()
+
+        self.github_local_file_path_label = tk.Label(self, text="GitHub local file path")
+        self.github_local_file_path_label.pack()
 
         self.github_local_file_path_entry = tk.Entry(self)
         self.github_local_file_path_entry.pack()
 
+        self.github_username_label = tk.Label(self, text="GitHub username")
+        self.github_username_label.pack()
+
         self.github_username_entry = tk.Entry(self)
         self.github_username_entry.pack()
 
+        self.github_email_label = tk.Label(self, text="GitHub email")
+        self.github_email_label.pack()
+
         self.github_email_entry = tk.Entry(self)
         self.github_email_entry.pack()
+
+        self.github_repository_label = tk.Label(self, text="GitHub repository")
+        self.github_repository_label.pack()
 
         self.github_repository_entry = tk.Entry(self)
         self.github_repository_entry.pack()
